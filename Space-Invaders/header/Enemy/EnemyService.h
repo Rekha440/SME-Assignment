@@ -34,6 +34,7 @@ namespace Enemy
 
 		EnemyController* spawnEnemy();
 		void destroyEnemy(EnemyController* enemy_controller);
+		void destroyEnemyAlongLine(float x_coord);
 		void killAllEnemies();
 	};
 }

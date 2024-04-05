@@ -130,6 +130,16 @@ namespace Enemy
 		enemy_list.clear();
 	}
 
+	void EnemyService::destroyEnemyAlongLine(float x_coord) {
+		for (EnemyController* enemy : enemy_list) {
+			float enemy_pos = enemy->getEnemyPosition().x;
+			if ((enemy_pos > (x_coord - 20)) && (enemy_pos < (x_coord + 20))) {
+				destroyEnemy(enemy);
+				enemy->processScore();
+			}
+		}
+	}
+
 	void EnemyService::reset()
 	{
 		destroy();

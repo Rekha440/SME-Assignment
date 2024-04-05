@@ -36,6 +36,8 @@ namespace Player
 
         void saveHighScore();
 
+        void processBulletFire();
+
     public:
         PlayerController();
         ~PlayerController();

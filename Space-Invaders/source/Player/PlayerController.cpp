@@ -4,6 +4,7 @@
 #include "../../header/Global/ServiceLocator.h"
 #include "../../header/Event/EventService.h"
 #include "../../header/Entity/EntityConfig.h"
+#include "../../header/Enemy/EnemyService.h"
 #include "../../header/Enemy/EnemyController.h"
 #include "../../header/Powerup/PowerupController.h"
 #include "../../header/Sound/SoundService.h"
@@ -200,8 +201,14 @@ namespace Player
 		if (event_service->pressedRightArrowKey() || event_service->pressedDKey()) 
 			moveRight();
 
-		//if (event_service->pressedLeftMouseButton()) 
-		//	processBulletFire();
+		if (event_service->pressedLeftMouseButton()) 
+			processBulletFire();
+	}
+
+	void PlayerController::processBulletFire() {
+		sf::Vector2f currentPosition = player_model->getPlayerPosition();
+
+		ServiceLocator::getInstance()->getEnemyService()->destroyEnemyAlongLine(currentPosition.x);
 	}
 
 	void PlayerController::moveLeft()
